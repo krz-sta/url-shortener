@@ -8,7 +8,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "urls")
