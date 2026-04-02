@@ -42,6 +42,7 @@ public class Url {
     public String getShortCode() { return shortCode; }
     public long getClicks() { return clicks; }
     public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getExpiresAt() { return expiresAt; }
     public void setId(Long id) { this.id = id; }
     public void setOriginalUrl(String originalUrl) { this.originalUrl = originalUrl; }
     public void setShortCode(String shortCode) { this.shortCode = shortCode; }
