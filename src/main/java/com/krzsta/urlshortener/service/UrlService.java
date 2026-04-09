@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.krzsta.urlshortener.model.Url;
 import com.krzsta.urlshortener.repository.UrlRepository;
 import com.krzsta.urlshortener.dto.ShortenRequest;
+import com.krzsta.urlshortener.dto.UrlResponse;
 
 @Service
 public class UrlService {
@@ -48,5 +49,18 @@ public class UrlService {
         urlRepository.save(found);
 
         return url.get().getOriginalUrl();
+    }
+
+    public UrlResponse getStats(String shortCode) {
+        Url url = urlRepository.findByShortCode(shortCode)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid short code"));
+        return new UrlResponse(
+            url.getOriginalUrl(),
+            url.getShortCode(),
+            "http://localhost:8080/" + url.getShortCode(),
+            url.getClicks(),
+            url.getCreatedAt(),
+            url.getExpiresAt()
+        );
     }
 }

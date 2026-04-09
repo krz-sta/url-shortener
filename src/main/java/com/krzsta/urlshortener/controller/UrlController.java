@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.krzsta.urlshortener.dto.ShortenRequest;
 import com.krzsta.urlshortener.service.UrlService;
+import com.krzsta.urlshortener.dto.UrlResponse;
 
 @RestController
 public class UrlController {
@@ -36,4 +37,8 @@ public class UrlController {
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
+    @GetMapping("/api/stats/{shortCode}")
+    public ResponseEntity<UrlResponse> getStats(@PathVariable String shortCode) {
+        return ResponseEntity.ok(urlService.getStats(shortCode));
+    }
 }
